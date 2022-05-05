@@ -21,7 +21,7 @@ namespace ParkyAPI.Repository
 
         public ICollection<NationalPark> getNationalParks()
         {
-            throw new NotImplementedException();
+            return _db.NationalParks.ToList();
         }
 
         public NationalPark getNationalPark(int nationalParkId)

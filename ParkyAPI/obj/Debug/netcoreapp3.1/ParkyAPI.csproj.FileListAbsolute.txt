@@ -43,3 +43,4 @@ C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\Par
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.dll
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.pdb
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.genruntimeconfig.cache
+C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.csproj.AssemblyReference.cache

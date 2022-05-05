@@ -24,5 +24,15 @@ namespace ParkyAPI.Controllers
             _nationalParkRepository = nationalParkRepository;
             _autoMapper = autoMapper;
         }
+
+
+        [HttpGet]
+        public IActionResult GetNationalParks()
+        {
+            var nationalParks = _nationalParkRepository.getNationalParks();
+
+            return Ok(nationalParks);
+        }
+
     }
 }
