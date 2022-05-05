@@ -17,7 +17,7 @@ namespace ParkyAPI.Controllers
     {
 
         //repository with DI
-        private INationalParkRepository _nationalParkRepository;
+        private readonly INationalParkRepository _nationalParkRepository;
         private readonly IMapper _autoMapper;
 
 
@@ -26,22 +26,30 @@ namespace ParkyAPI.Controllers
             _nationalParkRepository = nationalParkRepository;
             _autoMapper = autoMapper;
         }
+        
 
 
         [HttpGet]
         public IActionResult GetNationalParks()
         {
             //para no exponer nuestros modelos usaremos el automapper para enseñar solo las DTOs
-            var nationalParks = _nationalParkRepository.getNationalParks();
-
+            var nationalParks = _nationalParkRepository.GetNationalParks();
 
             var nationalParksDto = nationalParks.Select(nationalPark => _autoMapper.Map<NationalParkDto>(nationalPark)).ToList();
 
-            //return from ICollection nationalPark in nationalParks
-            //    select nationalParksDto.Add(_autoMapper.Map<NationalParkDto>(nationalPark));
-            //nationalParksDto.ForEach(x => );
+            return (nationalParks.Count == 0)
+                ? (IActionResult)NotFound()
+                : Ok(nationalParksDto);
+        }
 
-            return Ok(nationalParksDto);
+        [HttpGet("{nationalParkId:int}")]
+        public IActionResult GetNationalPark(int nationalParkId)
+        {
+            var nationalPark = _nationalParkRepository.GetNationalPark(nationalParkId);
+
+            return (nationalPark == null)
+                ? (IActionResult) NotFound()
+                : Ok(_autoMapper.Map<NationalParkDto>(nationalPark));
         }
 
     }

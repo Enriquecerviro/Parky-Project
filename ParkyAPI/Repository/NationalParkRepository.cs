@@ -19,12 +19,12 @@ namespace ParkyAPI.Repository
             _db = db;
         }
 
-        public ICollection<NationalPark> getNationalParks()
+        public ICollection<NationalPark> GetNationalParks()
         {
             return _db.NationalParks.ToList();
         }
 
-        public NationalPark getNationalPark(int nationalParkId)
+        public NationalPark GetNationalPark(int nationalParkId)
         {
             return _db.NationalParks.FirstOrDefault(x => x.Id == nationalParkId);
         }

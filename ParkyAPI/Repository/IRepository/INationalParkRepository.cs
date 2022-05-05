@@ -8,8 +8,8 @@ namespace ParkyAPI.Repository.IRepository
 {
     public interface INationalParkRepository
     {
-        ICollection<NationalPark> getNationalParks();
-        NationalPark getNationalPark(int nationalParkId);
+        ICollection<NationalPark> GetNationalParks();
+        NationalPark GetNationalPark(int nationalParkId);
 
         bool NationalParkExists(string name);
 
