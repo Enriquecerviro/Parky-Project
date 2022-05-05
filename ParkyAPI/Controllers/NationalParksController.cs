@@ -4,8 +4,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using AutoMapper;
+using ParkyAPI.Models;
 using ParkyAPI.Models.Dtos;
 using ParkyAPI.Repository.IRepository;
 
@@ -26,7 +28,7 @@ namespace ParkyAPI.Controllers
             _nationalParkRepository = nationalParkRepository;
             _autoMapper = autoMapper;
         }
-        
+
 
 
         [HttpGet]
@@ -35,10 +37,11 @@ namespace ParkyAPI.Controllers
             //para no exponer nuestros modelos usaremos el automapper para enseñar solo las DTOs
             var nationalParks = _nationalParkRepository.GetNationalParks();
 
-            var nationalParksDto = nationalParks.Select(nationalPark => _autoMapper.Map<NationalParkDto>(nationalPark)).ToList();
+            var nationalParksDto = nationalParks.Select(nationalPark => _autoMapper.Map<NationalParkDto>(nationalPark))
+                .ToList();
 
             return (nationalParks.Count == 0)
-                ? (IActionResult)NotFound()
+                ? (IActionResult) NotFound()
                 : Ok(nationalParksDto);
         }
 
@@ -50,6 +53,30 @@ namespace ParkyAPI.Controllers
             return (nationalPark == null)
                 ? (IActionResult) NotFound()
                 : Ok(_autoMapper.Map<NationalParkDto>(nationalPark));
+        }
+
+
+        [HttpPost]
+        public IActionResult CreateNationalPark([FromBody] NationalParkDto nationalParkDto)
+        {
+            if (nationalParkDto == null)
+                return BadRequest(ModelState);
+
+            if (_nationalParkRepository.NationalParkExists(nationalParkDto.Name))
+                return StatusCode(404, ModelState);
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var nationalPark = _autoMapper.Map<NationalPark>(nationalParkDto);
+            ModelState.AddModelError("", $"Algo falló al intentar crear el parque {nationalPark.Name}");
+
+            return (_nationalParkRepository.CreateNationalPark(nationalPark) == true)
+                ? (IActionResult) Ok()
+                : StatusCode(500, ModelState);
+
+
+
         }
 
     }

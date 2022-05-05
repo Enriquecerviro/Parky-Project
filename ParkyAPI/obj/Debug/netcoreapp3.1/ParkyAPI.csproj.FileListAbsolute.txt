@@ -1,3 +1,9 @@
+C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.csproj.AssemblyReference.cache
+C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.AssemblyInfoInputs.cache
+C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.AssemblyInfo.cs
+C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.csproj.CoreCompileInputs.cache
+C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\bin\Debug\netcoreapp3.1\ParkyAPI.exe
@@ -32,11 +38,6 @@ C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\bin\Debug\netcoreapp3.1\run
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.AssemblyInfoInputs.cache
-C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.AssemblyInfo.cs
-C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.csproj.CoreCompileInputs.cache
-C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\staticwebassets\ParkyAPI.StaticWebAssets.Manifest.cache
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.RazorTargetAssemblyInfo.cache
 C:\Users\Enrique\source\repos\Parky Project\ParkyAPI\obj\Debug\netcoreapp3.1\ParkyAPI.csproj.CopyComplete
