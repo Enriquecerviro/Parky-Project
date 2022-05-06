@@ -45,7 +45,8 @@ namespace ParkyAPI.Controllers
                 : Ok(nationalParksDto);
         }
 
-        [HttpGet("{nationalParkId:int}")]
+
+        [HttpGet("{nationalParkId:int}" , Name = "GetNationalPark")]
         public IActionResult GetNationalPark(int nationalParkId)
         {
             var nationalPark = _nationalParkRepository.GetNationalPark(nationalParkId);
@@ -63,19 +64,20 @@ namespace ParkyAPI.Controllers
                 return BadRequest(ModelState);
 
             if (_nationalParkRepository.NationalParkExists(nationalParkDto.Name))
+            {
+                ModelState.AddModelError("", $"El parque {nationalParkDto.Name} ya existe");
                 return StatusCode(404, ModelState);
+            }
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var nationalPark = _autoMapper.Map<NationalPark>(nationalParkDto);
-            ModelState.AddModelError("", $"Algo falló al intentar crear el parque {nationalPark.Name}");
+            ModelState.AddModelError("", $"Algo falló al intentar crear el parque {nationalParkDto.Name}");
 
             return (_nationalParkRepository.CreateNationalPark(nationalPark) == true)
-                ? (IActionResult) Ok()
+                ? CreatedAtRoute("GetNationalPark", new {nationalparkId = nationalPark.Id}, nationalPark)
                 : StatusCode(500, ModelState);
-
-
 
         }
 
