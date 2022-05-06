@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using ParkyAPI.Data;
 using ParkyAPI.ParkyMapper;
 using ParkyAPI.Repository;
@@ -37,6 +38,16 @@ namespace ParkyAPI
 
             services.AddAutoMapper(typeof(ParkyMappings));//automapper
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("ParkyOpenAPISpec",
+                    new OpenApiInfo()
+                    {
+                        Title = "Parky API",
+                        Version = "0.1a"
+                    });
+            });
+
             services.AddControllers();
         }
 
@@ -49,6 +60,8 @@ namespace ParkyAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
 
             app.UseRouting();
 
