@@ -81,5 +81,30 @@ namespace ParkyAPI.Controllers
 
         }
 
+
+        [HttpPatch("{nationalParkId:int}", Name = "UpdateNationalPark")]
+        public IActionResult UpdateNationalPark(int nationalParkId, [FromBody] NationalParkDto nationalParkDto)
+        {
+            if (nationalParkDto == null || nationalParkId != nationalParkDto.Id)
+                return BadRequest(ModelState);
+
+            if (!_nationalParkRepository.NationalParkExists(nationalParkDto.Name))
+            {
+                ModelState.AddModelError("", $"El parque {nationalParkDto.Name} no existe!");
+                return StatusCode(404, ModelState);
+            }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            //una vez tenemos las validaciones mapeamos el dto con la clase
+            var nationalPark = _autoMapper.Map<NationalPark>(nationalParkDto);
+
+
+            return (_nationalParkRepository.UpdateNationalPark(nationalPark))
+                ? (IActionResult)NoContent()
+                : StatusCode(500, ModelState);
+        }
+
     }
 }
