@@ -106,5 +106,29 @@ namespace ParkyAPI.Controllers
                 : StatusCode(500, ModelState);
         }
 
+        [HttpDelete("{nationalParkId:int}", Name = "NationalNationalPark")]
+        public IActionResult DeleteNationalPark(int nationalParkId)
+        {
+
+            if (!_nationalParkRepository.NationalParkExists(nationalParkId))
+                return NotFound();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            //al borrar no necesitamos nada del dto, solo localizar en el repo el recurso a borrar
+            var nationalPark = _nationalParkRepository.GetNationalPark(nationalParkId);
+
+
+            return (_nationalParkRepository.DeleteNationalPark(nationalPark))
+                ? (IActionResult)NoContent()
+                : StatusCode(500, ModelState);
+        }
+
+
+
+
+
+
     }
 }
