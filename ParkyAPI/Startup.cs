@@ -8,7 +8,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -44,8 +46,22 @@ namespace ParkyAPI
                     new OpenApiInfo()
                     {
                         Title = "Parky API",
-                        Version = "0.1a"
+                        Version = "0.1a",
+                        Description = "Parky API",
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                        {
+                            Email = "enrique.cerviro@protonmail.com",
+                            Name = "Enrique"
+                        },
+                        License = new OpenApiLicense()
+                        {
+                            Name = "MIT License",
+                            Url = new Uri("https://es.wikipedia.org/wiki/MIT_License")
+                        }
                     });
+                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+                options.IncludeXmlComments(cmlCommentsFullPath);
             });
 
             services.AddControllers();
@@ -67,6 +83,7 @@ namespace ParkyAPI
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/ParkyOpenAPISpec/swagger.json", "ParkyAPI");
+                options.RoutePrefix = "";
             });
 
             app.UseRouting();

@@ -33,11 +33,6 @@
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
         }
       },
       "frameworks": {
