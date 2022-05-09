@@ -106,6 +106,7 @@ namespace ParkyAPI.Controllers
                 : StatusCode(500, ModelState);
         }
 
+
         [HttpDelete("{nationalParkId:int}", Name = "NationalNationalPark")]
         public IActionResult DeleteNationalPark(int nationalParkId)
         {

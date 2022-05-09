@@ -32,7 +32,7 @@ namespace ParkyAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //db context
 
             services.AddScoped<INationalParkRepository, NationalParkRepository>();
 
@@ -61,7 +61,13 @@ namespace ParkyAPI
 
             app.UseHttpsRedirection();
 
-            app.UseSwagger();
+            app.UseSwagger();//SWAGGER
+
+            //aplicamos ui para swagger, le pasamos como endpoint la ruta de nuestra "documentation"
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/ParkyOpenAPISpec/swagger.json", "ParkyAPI");
+            });
 
             app.UseRouting();
 
