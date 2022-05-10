@@ -64,6 +64,15 @@ namespace ParkyAPI.Controllers
         {
             var nationalPark = _nationalParkRepository.GetNationalPark(nationalParkId);
 
+            //LA IMPORTANCIA DE AUTOMAPPER: si no lo usásemos, habría que hacer una aproach mas menos así:
+            //var nationalParkDto = new NationalParkDto()
+            //{
+            //    Created = nationalPark.Crates,
+            //    Established = nationalPark.Established,
+            //    Id = nationalPark.Id,
+            //    Name = nationalPark.Name
+            //};
+
             return (nationalPark == null)
                 ? (IActionResult) NotFound()
                 : Ok(_autoMapper.Map<NationalParkDto>(nationalPark));
@@ -144,6 +153,8 @@ namespace ParkyAPI.Controllers
         /// <returns></returns>
         [HttpDelete("{nationalParkId:int}", Name = "NationalNationalPark")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NationalParkDto))]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult DeleteNationalPark(int nationalParkId)
