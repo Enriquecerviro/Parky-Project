@@ -16,6 +16,8 @@ namespace ParkyAPI.Data
         }
 
         public DbSet<NationalPark> NationalParks { get; set; }
+
+        public DbSet<Trail> Trails { get; set; }
     }
 }
 #pragma warning restore CS1591 // Falta el comentario XML para el tipo o miembro visible públicamente
