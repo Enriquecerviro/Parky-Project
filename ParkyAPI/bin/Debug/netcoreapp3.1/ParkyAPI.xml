@@ -52,19 +52,19 @@
             <param name="trailId">Id del parque nacional</param>
             <returns>paque nacional</returns>
         </member>
-        <member name="M:ParkyAPI.Controllers.TrailsController.CreateTrail(ParkyAPI.Models.Dtos.TrailUpsertDto)">
+        <member name="M:ParkyAPI.Controllers.TrailsController.CreateTrail(ParkyAPI.Models.Dtos.TrailCreateDto)">
             <summary>
             Crea un nuevo parque nacional
             </summary>
-            <param name="trailUpsertDto">DTO del trail a insertar</param>
+            <param name="trailCreateDto">DTO del trail a insertar</param>
             <returns>el parque nacional recien creado</returns>
         </member>
-        <member name="M:ParkyAPI.Controllers.TrailsController.UpdateTrail(System.Int32,ParkyAPI.Models.Dtos.TrailUpsertDto)">
+        <member name="M:ParkyAPI.Controllers.TrailsController.UpdateTrail(System.Int32,ParkyAPI.Models.Dtos.TrailUpdateDto)">
             <summary>
             Modifica un parque nacional actual
             </summary>
             <param name="trailId">Parque nacional a modificar</param>
-            <param name="trailUpsertDto">nuevos valores para el esquema dto</param>
+            <param name="trailUpdateDto">nuevos valores para el esquema dto</param>
             <returns></returns>
         </member>
         <member name="M:ParkyAPI.Controllers.TrailsController.DeleteTrail(System.Int32)">

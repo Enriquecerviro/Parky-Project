@@ -82,29 +82,29 @@ namespace ParkyAPI.Controllers
         /// <summary>
         /// Crea un nuevo parque nacional
         /// </summary>
-        /// <param name="trailUpsertDto">DTO del trail a insertar</param>
+        /// <param name="trailCreateDto">DTO del trail a insertar</param>
         /// <returns>el parque nacional recien creado</returns>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(TrailUpsertDto))]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(TrailCreateDto))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult CreateTrail([FromBody] TrailUpsertDto trailUpsertDto)
+        public IActionResult CreateTrail([FromBody] TrailCreateDto trailCreateDto)
         {
-            if (trailUpsertDto == null)
+            if (trailCreateDto == null)
                 return BadRequest(ModelState);
 
-            if (_trailRepository.TrailExists(trailUpsertDto.Name))
+            if (_trailRepository.TrailExists(trailCreateDto.Name))
             {
-                ModelState.AddModelError("", $"El trail {trailUpsertDto.Name} ya existe");
+                ModelState.AddModelError("", $"El trail {trailCreateDto.Name} ya existe");
                 return StatusCode(404, ModelState);
             }
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var trail = _autoMapper.Map<Trail>(trailUpsertDto);
-            ModelState.AddModelError("", $"Algo falló al intentar crear el trail {trailUpsertDto.Name}");
+            var trail = _autoMapper.Map<Trail>(trailCreateDto);
+            ModelState.AddModelError("", $"Algo falló al intentar crear el trail {trailCreateDto.Name}");
 
-            return (_trailRepository.CreateTrail(trail) == true)
+            return (_trailRepository.CreateTrail(trail))
                 ? CreatedAtRoute("GetTrail", new { TrailId = trail.Id }, trail)
                 : StatusCode(500, ModelState);
 
@@ -115,20 +115,20 @@ namespace ParkyAPI.Controllers
         /// Modifica un parque nacional actual
         /// </summary>
         /// <param name="trailId">Parque nacional a modificar</param>
-        /// <param name="trailUpsertDto">nuevos valores para el esquema dto</param>
+        /// <param name="trailUpdateDto">nuevos valores para el esquema dto</param>
         /// <returns></returns>
         [HttpPatch("{TrailId:int}", Name = "UpdateTrail")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TrailUpsertDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TrailUpdateDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateTrail(int trailId, [FromBody] TrailUpsertDto trailUpsertDto)
+        public IActionResult UpdateTrail(int trailId, [FromBody] TrailUpdateDto trailUpdateDto)
         {
-            if (trailUpsertDto == null || trailId != trailUpsertDto.Id)
+            if (trailUpdateDto == null || trailId != trailUpdateDto.Id)
                 return BadRequest(ModelState);
 
-            if (!_trailRepository.TrailExists(trailUpsertDto.Name))
+            if (!_trailRepository.TrailExists(trailUpdateDto.Name))
             {
-                ModelState.AddModelError("", $"El parque {trailUpsertDto.Name} no existe!");
+                ModelState.AddModelError("", $"El parque {trailUpdateDto.Name} no existe!");
                 return StatusCode(404, ModelState);
             }
 
@@ -136,7 +136,7 @@ namespace ParkyAPI.Controllers
                 return BadRequest(ModelState);
 
             //una vez tenemos las validaciones mapeamos el dto con la clase
-            var trail = _autoMapper.Map<Trail>(trailUpsertDto);
+            var trail = _autoMapper.Map<Trail>(trailUpdateDto);
 
 
             return (_trailRepository.UpdateTrail(trail))

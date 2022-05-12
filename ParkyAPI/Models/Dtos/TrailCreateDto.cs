@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ParkyAPI.Models.Dtos
 {
-    public class TrailUpsertDto
+    public class TrailCreateDto
     {
-        [Key]
-        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -24,7 +22,9 @@ namespace ParkyAPI.Models.Dtos
 
         [Required]
         public int NationalParkId { get; set; }
-        
+
+
+
 
     }
 }
