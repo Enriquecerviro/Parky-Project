@@ -37,6 +37,7 @@ namespace ParkyAPI
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //db context
 
             services.AddScoped<INationalParkRepository, NationalParkRepository>();
+            services.AddScoped<ITrailRepository, TrailRepository>();
 
             services.AddAutoMapper(typeof(ParkyMappings));//automapper
 

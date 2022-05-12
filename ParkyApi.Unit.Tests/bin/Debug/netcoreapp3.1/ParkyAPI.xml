@@ -39,5 +39,40 @@
             <param name="nationalParkId">Id del parque nacional a borrar</param>
             <returns></returns>
         </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.GetTrails">
+            <summary>
+            Get lista de parques nacionales
+            </summary>
+            <returns>Lista parques nacionales</returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.GetTrail(System.Int32)">
+            <summary>
+            Devuelve el parque que se corresponda al id
+            </summary>
+            <param name="trailId">Id del parque nacional</param>
+            <returns>paque nacional</returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.CreateTrail(ParkyAPI.Models.Dtos.TrailDto)">
+            <summary>
+            Crea un nuevo parque nacional
+            </summary>
+            <param name="trailDto">DTO del trail a insertar</param>
+            <returns>el parque nacional recien creado</returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.UpdateTrail(System.Int32,ParkyAPI.Models.Dtos.TrailDto)">
+            <summary>
+            Modifica un parque nacional actual
+            </summary>
+            <param name="TrailId">Parque nacional a modificar</param>
+            <param name="TrailDto">nuevos valores para el esquema dto</param>
+            <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.DeleteTrail(System.Int32)">
+            <summary>
+            Borra un parque nacional
+            </summary>
+            <param name="trailId">Id del parque nacional a borrar</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
